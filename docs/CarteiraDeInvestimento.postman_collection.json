@@ -1,0 +1,495 @@
+{
+	"info": {
+		"_postman_id": "7a30487d-6b1d-4484-bf36-cc5c3ae1da73",
+		"name": "CarteiraDeInvestimento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30333683",
+		"_collection_link": "https://red-meteor-823903.postman.co/workspace/My-Workspace~21527904-fb11-4503-8c7e-16116e62c843/collection/30333683-7a30487d-6b1d-4484-bf36-cc5c3ae1da73?action=share&source=collection_link&creator=30333683"
+	},
+	"item": [
+		{
+			"name": "Transação",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/transition",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transition"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/transition/8529fe36-6530-11ee-8c99-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transition",
+								"8529fe36-6530-11ee-8c99-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/transition/8529fe36-6530-11ee-8c99-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transition",
+								"8529fe36-6530-11ee-8c99-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dataDaTransacao\": \"07/10/2022\",\n    \"valorTotal\": 100.50,\n    \"quantidade\": 5,\n    \"Usuario_id\": \"2263d968-6533-11ee-8c99-0242ac120002\",\n    \"Ativo_id\": \"770e904e-6532-11ee-8c99-0242ac120002\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/transition",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transition"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dataDaTransacao\": \"20/01/2025\",\n    \"valorTotal\": 400,\n    \"quantidade\": 20,\n    \"Usuario_id\": \"2263d968-6533-11ee-8c99-0242ac120002\",\n    \"Ativo_id\": \"770e904e-6532-11ee-8c99-0242ac120002\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/transition/8529fe36-6530-11ee-8c99-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transition",
+								"8529fe36-6530-11ee-8c99-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ativo",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/active",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/active/770e904e-6532-11ee-8c99-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"active",
+								"770e904e-6532-11ee-8c99-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/active/770e904e-6532-11ee-8c99-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"active",
+								"770e904e-6532-11ee-8c99-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Ação Valorant\",\n    \"descricao\": \"Ação da Empresa Riot\",\n    \"categoria\": \"Ações\",\n    \"valor\": 50.75,\n    \"Patrimonio_id\": \"a08fc08a-6534-11ee-8c99-0242ac120002\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/active",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Ação CS2\",\n    \"descricao\": \"Ação da Empresa Steam\",\n    \"categoria\": \"Ação\",\n    \"valor\": 4500,\n    \"Patrimonio_id\": \"a08fc08a-6534-11ee-8c99-0242ac120002\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/active/770e904e-6532-11ee-8c99-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"active",
+								"770e904e-6532-11ee-8c99-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patrimonio",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/patrimony",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patrimony"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/patrimony/a08fc08a-6534-11ee-8c99-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patrimony",
+								"a08fc08a-6534-11ee-8c99-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/patrimony/a08fc08a-6534-11ee-8c99-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patrimony",
+								"a08fc08a-6534-11ee-8c99-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"valorTotal\": 3500,\n    \"quantidadeTotal\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/patrimony",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patrimony"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"valorTotal\": 1000,\n    \"quantidadeTotal\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/patrimony/a08fc08a-6534-11ee-8c99-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patrimony",
+								"a08fc08a-6534-11ee-8c99-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuário",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/patrimony",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patrimony"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/2263d968-6533-11ee-8c99-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"2263d968-6533-11ee-8c99-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/2263d968-6533-11ee-8c99-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"2263d968-6533-11ee-8c99-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"João Victor\",\n    \"email\": \"joaov02@gmail.com\",\n    \"senha\": \"jvzin055223\",\n    \"Patrimonio_id\": \"a08fc08a-6534-11ee-8c99-0242ac120002\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"João Vitor\",\n    \"email\": \"joaov02@gmail.com\",\n    \"senha\": \"jvt12022001\",\n    \"Patrimonio_id\": \"a08fc08a-6534-11ee-8c99-0242ac120002\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/2263d968-6533-11ee-8c99-0242ac120002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"2263d968-6533-11ee-8c99-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
