@@ -1,43 +1,45 @@
-CREATE TABLE patrimonio (
+CREATE TABLE asset (
     id UUID NOT NULL
-        CONSTRAINT patrimonio_pk
+        CONSTRAINT asset_pk
             PRIMARY KEY,
-    valorTotal DOUBLE PRECISION,
-    quantidadeTotal INT
-);
-CREATE TABLE usuario (
-    id UUID NOT NULL
-        CONSTRAINT usuario_pk
-            PRIMARY KEY,
-    nome VARCHAR(45),
-    email VARCHAR(45),
-    senha VARCHAR(45),
-    patrimonio_id UUID
-        CONSTRAINT usuario_fk_patrimonio_id
-            REFERENCES patrimonio
-);
-CREATE TABLE ativo (
-    id UUID NOT NULL
-        CONSTRAINT ativo_pk
-            PRIMARY KEY,
-    nome VARCHAR(45),
-    descricao VARCHAR(45),
-    categoria VARCHAR(45),
-    valor DOUBLE PRECISION,
-    patrimonio_id UUID
-        CONSTRAINT ativo_fk_patrimonio_id
-            REFERENCES patrimonio
+    totalValue DOUBLE PRECISION,
+    totalQuantity INT
 );
 
-CREATE TABLE transacao (
-    id UUID CONSTRAINT transacao_pk PRIMARY KEY,
-    dataDaTransacao DATE,
-    valorTotal DOUBLE PRECISION,
-    quantidade INT,
-    Usuario_id UUID
-        CONSTRAINT transacao_fk_usuario_id
-            REFERENCES usuario,
-    Ativo_id UUID
-        CONSTRAINT transacao_fk_ativo_id
-            REFERENCES ativo
+CREATE TABLE user (
+    id UUID NOT NULL
+        CONSTRAINT user_pk
+            PRIMARY KEY,
+    name VARCHAR(45),
+    email VARCHAR(45),
+    password VARCHAR(45),
+    asset_id UUID
+        CONSTRAINT user_fk_asset_id
+            REFERENCES asset
+);
+
+CREATE TABLE investment (
+    id UUID NOT NULL
+        CONSTRAINT investment_pk
+            PRIMARY KEY,
+    name VARCHAR(45),
+    description VARCHAR(45),
+    category VARCHAR(45),
+    value DOUBLE PRECISION,
+    asset_id UUID
+        CONSTRAINT investment_fk_asset_id
+            REFERENCES asset
+);
+
+CREATE TABLE transaction (
+    id UUID CONSTRAINT transaction_pk PRIMARY KEY,
+    transactionDate DATE,
+    totalValue DOUBLE PRECISION,
+    quantity INT,
+    user_id UUID
+        CONSTRAINT transaction_fk_user_id
+            REFERENCES user,
+    investment_id UUID
+        CONSTRAINT transaction_fk_investment_id
+            REFERENCES investment
 );
