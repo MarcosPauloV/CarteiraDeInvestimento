@@ -9,14 +9,14 @@ import java.util.*
 class TransactionService (
     private val transitionRepository: TransactionRepository
 ) {
-    fun insert(transaction: TransitionCreateDTO): Transaction {
+    fun insert(transaction: TransitionCreateDTO): Transaction? {
         val transitionDomain = transaction.toTransaction()
         transitionRepository.insert(transaction = transitionDomain)
         return findById(transitionDomain.id)
     }
 
-    fun findById(transtionId: UUID): Transaction {
-        return transitionRepository.findById(transtionId) ?: error("Transação não encontrada!")
+    fun findById(transactionId: UUID): Transaction? {
+        return transitionRepository.findById(transactionId)
     }
 
 }

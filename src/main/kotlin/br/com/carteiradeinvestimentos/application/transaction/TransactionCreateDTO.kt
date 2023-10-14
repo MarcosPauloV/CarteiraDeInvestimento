@@ -6,7 +6,6 @@ import java.util.*
 
 @Serializable
 data class TransitionCreateDTO (
-    val id: UUID = UUID.randomUUID(),
     val transactionDate: String,
     val totalValue: Double,
     val quantity: Int,
@@ -15,7 +14,6 @@ data class TransitionCreateDTO (
 )
 
 fun TransitionCreateDTO.toTransaction() = Transaction (
-    id = id,
     transactionDate = transactionDate,
     totalValue = totalValue,
     quantity = quantity,
