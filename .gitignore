@@ -17,6 +17,8 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+postgres-data
+
 ### IntelliJ IDEA ###
 .idea
 *.iws

@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "7a30487d-6b1d-4484-bf36-cc5c3ae1da73",
+		"_postman_id": "2f5545d4-243b-4e17-83fe-eaf25b6d7119",
 		"name": "CarteiraDeInvestimento",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "30333683",
-		"_collection_link": "https://red-meteor-823903.postman.co/workspace/My-Workspace~21527904-fb11-4503-8c7e-16116e62c843/collection/30333683-7a30487d-6b1d-4484-bf36-cc5c3ae1da73?action=share&source=collection_link&creator=30333683"
+		"_exporter_id": "27736049"
 	},
 	"item": [
 		{
@@ -35,15 +34,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/transition/8529fe36-6530-11ee-8c99-0242ac120002",
+							"raw": "http://localhost:8080/transaction/9d290a9b-12da-46d3-bc0a-9bc04f7c6569",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"transition",
-								"8529fe36-6530-11ee-8c99-0242ac120002"
+								"transaction",
+								"9d290a9b-12da-46d3-bc0a-9bc04f7c6569"
 							]
 						}
 					},
@@ -76,7 +75,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"dataDaTransacao\": \"07/10/2022\",\n    \"valorTotal\": 100.50,\n    \"quantidade\": 5,\n    \"Usuario_id\": \"2263d968-6533-11ee-8c99-0242ac120002\",\n    \"Ativo_id\": \"770e904e-6532-11ee-8c99-0242ac120002\"\n}",
+							"raw": "{\n    \"transactionDate\": \"2023-10-14T12:00:00Z\",\n    \"totalValue\": 100.50,\n    \"quantity\": 5,\n    \"user_id\": \"2263d968-6533-11ee-8c99-0242ac120002\",\n    \"investment_id\": \"770e904e-6532-11ee-8c99-0242ac120002\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,14 +83,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/transition",
+							"raw": "http://localhost:8080/transaction",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"transition"
+								"transaction"
 							]
 						}
 					},
