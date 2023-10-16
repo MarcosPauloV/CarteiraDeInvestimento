@@ -13,6 +13,11 @@ import java.util.*
 class TransactionJDBCRepository(
     private val db: NamedParameterJdbcOperations
 ) : TransactionRepository {
+    override fun findAll(): List<Transaction> {
+        val transactions = db.query("SELECT * FROM transaction", rowMapper())
+        return transactions
+    }
+
     override fun insert(transaction: Transaction): Boolean {
         val params = MapSqlParameterSource()
         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
@@ -36,6 +41,12 @@ class TransactionJDBCRepository(
         return transaction
     }
 
+    override fun delete(transitionId: UUID): Boolean {
+        val params = MapSqlParameterSource("id", transitionId)
+        val delitedLines = db.update("DELETE FROM transaction WHERE id = :id", params)
+        return delitedLines == 1
+    }
+
     private fun rowMapper() = org.springframework.jdbc.core.RowMapper<Transaction> { rs, _ ->
         val transitionId = UUID.fromString(rs.getString("id"))
 
@@ -48,5 +59,4 @@ class TransactionJDBCRepository(
             investment_id = UUID.fromString(rs.getString("investment_id"))
         )
     }
-
 }

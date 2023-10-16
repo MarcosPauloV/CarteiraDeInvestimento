@@ -13,6 +13,11 @@ class TransactionHandler (
     private val transactionService: TransactionService
 ) {
 
+    fun findAll(): ResponseEntity<List<Transaction>>{
+        val transactions = transactionService.findAll()
+        return ResponseEntity.ok(transactions)
+    }
+
     fun insert(transitionCreateDTO: TransitionCreateDTO): ResponseEntity<Transaction>{
         val transaction = transactionService.insert(transitionCreateDTO)
         return ResponseEntity.status(HttpStatus.CREATED).body(transaction)
@@ -21,6 +26,11 @@ class TransactionHandler (
     fun findById(transactionId: String): ResponseEntity<Transaction>{
         val transaction = transactionService.findById(UUID.fromString(transactionId))
         return ResponseEntity.ok(transaction)
+    }
+
+    fun delete(transitionId: String): ResponseEntity<String>{
+        transactionService.delete(transitionId = UUID.fromString(transitionId))
+        return ResponseEntity.noContent().build()
     }
 
 }
