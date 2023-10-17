@@ -2,6 +2,7 @@ package br.com.carteiradeinvestimentos.adapters.http.transaction
 
 import br.com.carteiradeinvestimentos.application.transaction.TransactionService
 import br.com.carteiradeinvestimentos.application.transaction.TransitionCreateDTO
+import br.com.carteiradeinvestimentos.application.transaction.TransitionUpdateDTO
 import br.com.carteiradeinvestimentos.domain.transaction.Transaction
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -32,5 +33,9 @@ class TransactionHandler (
         transactionService.delete(transitionId = UUID.fromString(transitionId))
         return ResponseEntity.noContent().build()
     }
+
+
+    fun update(transactionUpdateDTO: TransitionUpdateDTO, id: String)
+    val transaction = transactionService.update(transactionUpdateDTO)
 
 }

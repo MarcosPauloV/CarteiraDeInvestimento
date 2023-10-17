@@ -9,7 +9,6 @@ import java.util.*
 class TransactionService (
     private val transitionRepository: TransactionRepository
 ) {
-
     fun findAll(): List<Transaction> {
         return transitionRepository.findAll()
     }
@@ -26,7 +25,12 @@ class TransactionService (
 
     fun delete(transitionId: UUID) {
         transitionRepository.delete(transitionId)
+    }
 
+    fun update(transaction: TransitionUpdateDTO, transactionId: UUID): Transaction{
+        transitionRepository.findById(transactionId) ?: error("Ocorreu um erro!")
+        transitionRepository.update(transaction.toTransaction(id = transactionId))
+        return findById(transactionId) ?: error("Ocorreu um erro!")
     }
 
 }
