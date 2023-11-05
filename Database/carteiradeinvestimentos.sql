@@ -6,7 +6,7 @@ CREATE TABLE asset (
     totalQuantity INT
 );
 
-CREATE TABLE user (
+CREATE TABLE users (
     id UUID NOT NULL
         CONSTRAINT user_pk
             PRIMARY KEY,
@@ -38,7 +38,7 @@ CREATE TABLE transaction (
     quantity INT,
     user_id UUID
         CONSTRAINT transaction_fk_user_id
-            REFERENCES user,
+            REFERENCES users,
     investment_id UUID
         CONSTRAINT transaction_fk_investment_id
             REFERENCES investment

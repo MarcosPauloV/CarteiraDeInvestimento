@@ -7,6 +7,6 @@ data class Transaction(
     val transactionDate: String,
     val totalValue: Double,
     val quantity: Int,
-    val user_id: UUID,
-    val investment_id: UUID
+    val userId: UUID,
+    val investmentId: UUID
 )

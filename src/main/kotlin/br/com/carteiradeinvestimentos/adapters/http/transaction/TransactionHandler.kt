@@ -34,8 +34,8 @@ class TransactionHandler (
         return ResponseEntity.noContent().build()
     }
 
-
-    fun update(transactionUpdateDTO: TransitionUpdateDTO, id: String)
-    val transaction = transactionService.update(transactionUpdateDTO)
-
+    fun update(transactionUpdateDTO: TransitionUpdateDTO, id: String): ResponseEntity<Transaction>{
+        val transaction = transactionService.update(transactionUpdateDTO, UUID.fromString(id))
+        return ResponseEntity.ok(transaction)
+    }
 }

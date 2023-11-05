@@ -1,6 +1,7 @@
 package br.com.carteiradeinvestimentos.adapters.http.transaction
 
 import br.com.carteiradeinvestimentos.application.transaction.TransitionCreateDTO
+import br.com.carteiradeinvestimentos.application.transaction.TransitionUpdateDTO
 import br.com.carteiradeinvestimentos.domain.transaction.Transaction
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -29,5 +30,8 @@ class TransactionController (
         return transactionHandler.delete(transactionId)
     }
 
-
+    @PutMapping("/transaction/{transactionId}")
+    fun update(@PathVariable transactionId: String, transactionUpdateDTO: TransitionUpdateDTO): ResponseEntity<Transaction> {
+        return transactionHandler.update(transactionUpdateDTO, transactionId)
+    }
 }

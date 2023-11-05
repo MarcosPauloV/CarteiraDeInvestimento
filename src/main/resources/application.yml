@@ -6,7 +6,7 @@ spring:
       web-application-type: servlet
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/carteiradeinvestimentos
+    url: jdbc:postgresql://localhost:5432/carteiradeinvestimentos?currentSchema=carteiradeinvestimentos
     username: root
     password: root
 

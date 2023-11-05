@@ -2,10 +2,10 @@ package br.com.carteiradeinvestimentos.application.transaction.exceptions
 
 import java.util.*
 
-sealed class TransactionException (mensage: String) {
+sealed class TransactionException (message: String) : Exception(message){
     abstract val transactionId : UUID?
 }
 
-data class TransactionNotFound (
+data class TransactionNotFoundException (
     override val transactionId : UUID?
 ) : TransactionException ("Transação $transactionId não encontrada")
