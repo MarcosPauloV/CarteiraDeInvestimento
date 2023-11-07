@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.*
 class TransactionController (
     private val transactionHandler: TransactionHandler
 ) {
-    @GetMapping("/transactions")
-    fun findAll(): ResponseEntity<List<Transaction>>{
-        return transactionHandler.findAll()
-    }
-
     @PostMapping("/transaction")
     fun insert(@RequestBody transaction: TransitionCreateDTO): ResponseEntity<Transaction>{
         return transactionHandler.insert(transaction)
@@ -25,13 +20,18 @@ class TransactionController (
         return transactionHandler.findById(transactionId)
     }
 
-    @DeleteMapping("/transaction/{transactionId}")
-    fun delete(@PathVariable transactionId: String): ResponseEntity<String>{
-        return transactionHandler.delete(transactionId)
+    @GetMapping("/transactions")
+    fun findAll(): ResponseEntity<List<Transaction>>{
+        return transactionHandler.findAll()
     }
 
     @PutMapping("/transaction/{transactionId}")
     fun update(@PathVariable transactionId: String, transactionUpdateDTO: TransitionUpdateDTO): ResponseEntity<Transaction> {
         return transactionHandler.update(transactionUpdateDTO, transactionId)
+    }
+
+    @DeleteMapping("/transaction/{transactionId}")
+    fun delete(@PathVariable transactionId: String): ResponseEntity<String>{
+        return transactionHandler.delete(transactionId)
     }
 }

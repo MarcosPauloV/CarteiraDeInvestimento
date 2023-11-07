@@ -33,7 +33,7 @@ CREATE TABLE investment (
 
 CREATE TABLE transaction (
     id UUID CONSTRAINT transaction_pk PRIMARY KEY,
-    transactionDate DATE,
+    transactionDate VARCHAR(45),
     totalValue DOUBLE PRECISION,
     quantity INT,
     user_id UUID

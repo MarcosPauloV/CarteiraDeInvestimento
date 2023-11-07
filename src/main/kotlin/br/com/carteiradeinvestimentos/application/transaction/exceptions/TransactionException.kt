@@ -2,7 +2,7 @@ package br.com.carteiradeinvestimentos.application.transaction.exceptions
 
 import java.util.*
 
-sealed class TransactionException (message: String) : Exception(message){
+sealed class TransactionException (message: String) : Exception (message){
     abstract val transactionId : UUID?
 }
 

@@ -17,35 +17,37 @@ import java.util.*
 class TransactionJDBCRepository(
     private val db: NamedParameterJdbcOperations
 ) : TransactionRepository {
-    override fun findAll(): List<Transaction> {
-        val transactions = db.query(sqlFindAll(), rowMapper())
-        return transactions
-    }
     override fun insert(transaction: Transaction): Boolean {
         val params = params(transaction)
-        val afectedLines = db.update(
+        println("chegamos aqui")
+        val affectedLines = db.update(
             sqlInsert(),
             params
         )
-        return afectedLines > 0
+        return affectedLines > 0
     }
-    override fun findById(transactionId: UUID): Transaction? {
-        val params = MapSqlParameterSource("id", transactionId)
-        val transaction = db.query(sqlFindById(), params, rowMapper()).firstOrNull()
-        return transaction
+
+    override fun findAll(): List<Transaction> {
+        return db.query(sqlFindAll(), rowMapper())
     }
-    override fun delete(transitionId: UUID): Boolean {
+
+    override fun findById(transitionId: UUID): Transaction? {
         val params = MapSqlParameterSource("id", transitionId)
-        val delitedLines = db.update(sqlDelete(), params)
-        return delitedLines == 1
+        return db.query(sqlFindById(), params, rowMapper()).firstOrNull()
     }
 
     override fun update(transaction: Transaction): Boolean {
-        val afectedLines = db.update(
+        val affectedLines = db.update(
             sqlInsert(),
             params(transaction)
         )
-        return afectedLines > 0
+        return affectedLines > 0
+    }
+
+    override fun delete(transitionId: UUID): Boolean {
+        val params = MapSqlParameterSource("id", transitionId)
+        val deletedLines = db.update(sqlDelete(), params)
+        return deletedLines == 1
     }
 
     private fun rowMapper() = org.springframework.jdbc.core.RowMapper<Transaction> { rs, _ ->
@@ -55,21 +57,19 @@ class TransactionJDBCRepository(
             transactionDate = rs.getString("transactionDate"),
             totalValue = rs.getDouble("totalValue"),
             quantity = rs.getInt("quantity"),
-            user_id = UUID.fromString(rs.getString("user_id")),
-            investment_id = UUID.fromString(rs.getString("investment_id"))
+            userId = UUID.fromString(rs.getString("user_id")),
+            investmentId = UUID.fromString(rs.getString("investment_id"))
         )
     }
 
     private fun params(transaction: Transaction): MapSqlParameterSource {
         val params = MapSqlParameterSource()
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-        val date = dateFormat.parse(transaction.transactionDate)?:Instant.now()
         params.addValue("id", transaction.id)
-        params.addValue("transactionDate", date)
+        params.addValue("transactionDate", transaction.transactionDate)
         params.addValue("totalValue", transaction.totalValue)
         params.addValue("quantity", transaction.quantity)
-        params.addValue("user_id", transaction.user_id)
-        params.addValue("investment_id", transaction.investment_id)
+        params.addValue("user_id", transaction.userId)
+        params.addValue("investment_id", transaction.investmentId)
         return params
     }
 }

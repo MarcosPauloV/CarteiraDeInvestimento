@@ -2,10 +2,10 @@ package br.com.carteiradeinvestimentos.adapters.jdbc.transaction
 
 object TransactionSqlExpressions {
     fun sqlInsert() = """
-        INSERT INTO transaction (
+        INSERT INTO "transaction" (
         id, 
-        transactiondate,
-        totalvalue,
+        transactionDate,
+        totalValue,
         quantity, 
         user_id, 
         investment_id
@@ -19,24 +19,38 @@ object TransactionSqlExpressions {
         )
     """.trimIndent()
     fun sqlFindById() = """
-        SELECT  * FROM transaction WHERE id = :id
+        SELECT  
+        id, 
+        transactionDate,
+        totalValue,
+        quantity, 
+        user_id, 
+        investment_id
+        FROM "transaction"
+        WHERE id = :id
     """.trimIndent()
 
     fun sqlFindAll() = """
-        SELECT * FROM transaction
+        SELECT  
+        id, 
+        transactionDate,
+        totalValue,
+        quantity, 
+        user_id, 
+        investment_id
+        FROM "transaction"
     """.trimIndent()
 
     fun sqlDelete() = """
-        DELETE FROM transaction WHERE id = :id
+        DELETE FROM "transaction" WHERE id = :id
     """.trimIndent()
 
     fun sqlUpdate() = """
-        UPDATE transaction
-        SET transactiondate = :transactionDate,
-            totalvalue = :totalValue, 
+        UPDATE "transaction"
+        SET transactionDate = :transactionDate,
+            totalValue = :totalvalue, 
             quantity = :quantity, 
             user_id = :user_id, 
             investment_id = :investment_id
     """.trimIndent()
-
 }

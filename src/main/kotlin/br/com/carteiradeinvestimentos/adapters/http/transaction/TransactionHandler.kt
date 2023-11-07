@@ -13,15 +13,15 @@ import java.util.*
 class TransactionHandler (
     private val transactionService: TransactionService
 ) {
+    fun insert(transitionCreateDTO: TransitionCreateDTO): ResponseEntity<Transaction>{
+        println("chegamos aqui")
+        val transaction = transactionService.insert(transitionCreateDTO)
+        return ResponseEntity.status(HttpStatus.CREATED).body(transaction)
+    }
 
     fun findAll(): ResponseEntity<List<Transaction>>{
         val transactions = transactionService.findAll()
         return ResponseEntity.ok(transactions)
-    }
-
-    fun insert(transitionCreateDTO: TransitionCreateDTO): ResponseEntity<Transaction>{
-        val transaction = transactionService.insert(transitionCreateDTO)
-        return ResponseEntity.status(HttpStatus.CREATED).body(transaction)
     }
 
     fun findById(transactionId: String): ResponseEntity<Transaction>{
@@ -29,13 +29,13 @@ class TransactionHandler (
         return ResponseEntity.ok(transaction)
     }
 
-    fun delete(transitionId: String): ResponseEntity<String>{
-        transactionService.delete(transitionId = UUID.fromString(transitionId))
-        return ResponseEntity.noContent().build()
-    }
-
     fun update(transactionUpdateDTO: TransitionUpdateDTO, id: String): ResponseEntity<Transaction>{
         val transaction = transactionService.update(transactionUpdateDTO, UUID.fromString(id))
         return ResponseEntity.ok(transaction)
+    }
+
+    fun delete(transitionId: String): ResponseEntity<String>{
+        transactionService.delete(transitionId = UUID.fromString(transitionId))
+        return ResponseEntity.noContent().build()
     }
 }
