@@ -47,10 +47,11 @@ object TransactionSqlExpressions {
 
     fun sqlUpdate() = """
         UPDATE "transaction"
-        SET transactionDate = :transactionDate,
+        SET transactionDate = :transactiondate,
             totalValue = :totalvalue, 
             quantity = :quantity, 
             user_id = :user_id, 
             investment_id = :investment_id
+        WHERE id = :id
     """.trimIndent()
 }

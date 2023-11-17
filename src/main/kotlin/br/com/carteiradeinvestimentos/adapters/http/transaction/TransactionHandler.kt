@@ -14,7 +14,6 @@ class TransactionHandler (
     private val transactionService: TransactionService
 ) {
     fun insert(transitionCreateDTO: TransitionCreateDTO): ResponseEntity<Transaction>{
-        println("chegamos aqui")
         val transaction = transactionService.insert(transitionCreateDTO)
         return ResponseEntity.status(HttpStatus.CREATED).body(transaction)
     }

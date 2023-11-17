@@ -26,7 +26,7 @@ class TransactionController (
     }
 
     @PutMapping("/transaction/{transactionId}")
-    fun update(@PathVariable transactionId: String, transactionUpdateDTO: TransitionUpdateDTO): ResponseEntity<Transaction> {
+    fun update(@PathVariable transactionId: String, @RequestBody transactionUpdateDTO: TransitionUpdateDTO): ResponseEntity<Transaction> {
         return transactionHandler.update(transactionUpdateDTO, transactionId)
     }
 

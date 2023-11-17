@@ -43,3 +43,25 @@ CREATE TABLE transaction (
         CONSTRAINT transaction_fk_investment_id
             REFERENCES investment
 );
+
+-- Database Used
+
+CREATE TABLE users (
+ id UUID NOT NULL
+   CONSTRAINT user_pk
+         PRIMARY KEY,
+ name VARCHAR(45),
+ email VARCHAR(45),
+ password VARCHAR(45),
+);
+
+CREATE TABLE transaction (
+       id UUID CONSTRAINT transaction_pk PRIMARY KEY,
+       transactionDate VARCHAR(45),
+       totalValue DOUBLE PRECISION,
+       quantity INT,
+       user_id UUID
+           CONSTRAINT transaction_fk_user_id
+               REFERENCES users,
+       investment_id UUID
+);

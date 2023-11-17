@@ -23,6 +23,11 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("io.jsonwebtoken:jjwt:0.12.3")
+	implementation("io.github.microutils:kotlin-logging:2.0.10")
+
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

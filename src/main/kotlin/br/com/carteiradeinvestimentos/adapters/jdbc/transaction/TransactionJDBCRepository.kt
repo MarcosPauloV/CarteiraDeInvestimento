@@ -4,6 +4,7 @@ import br.com.carteiradeinvestimentos.adapters.jdbc.transaction.TransactionSqlEx
 import br.com.carteiradeinvestimentos.adapters.jdbc.transaction.TransactionSqlExpressions.sqlFindAll
 import br.com.carteiradeinvestimentos.adapters.jdbc.transaction.TransactionSqlExpressions.sqlFindById
 import br.com.carteiradeinvestimentos.adapters.jdbc.transaction.TransactionSqlExpressions.sqlInsert
+import br.com.carteiradeinvestimentos.adapters.jdbc.transaction.TransactionSqlExpressions.sqlUpdate
 import br.com.carteiradeinvestimentos.domain.transaction.Transaction
 import br.com.carteiradeinvestimentos.domain.transaction.TransactionRepository
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource
@@ -38,7 +39,7 @@ class TransactionJDBCRepository(
 
     override fun update(transaction: Transaction): Boolean {
         val affectedLines = db.update(
-            sqlInsert(),
+            sqlUpdate(),
             params(transaction)
         )
         return affectedLines > 0
@@ -54,8 +55,8 @@ class TransactionJDBCRepository(
         val transitionId = UUID.fromString(rs.getString("id"))
         Transaction(
             id = transitionId,
-            transactionDate = rs.getString("transactionDate"),
-            totalValue = rs.getDouble("totalValue"),
+            transactionDate = rs.getString("transactiondate"),
+            totalValue = rs.getDouble("totalvalue"),
             quantity = rs.getInt("quantity"),
             userId = UUID.fromString(rs.getString("user_id")),
             investmentId = UUID.fromString(rs.getString("investment_id"))
@@ -65,8 +66,8 @@ class TransactionJDBCRepository(
     private fun params(transaction: Transaction): MapSqlParameterSource {
         val params = MapSqlParameterSource()
         params.addValue("id", transaction.id)
-        params.addValue("transactionDate", transaction.transactionDate)
-        params.addValue("totalValue", transaction.totalValue)
+        params.addValue("transactiondate", transaction.transactionDate)
+        params.addValue("totalvalue", transaction.totalValue)
         params.addValue("quantity", transaction.quantity)
         params.addValue("user_id", transaction.userId)
         params.addValue("investment_id", transaction.investmentId)
